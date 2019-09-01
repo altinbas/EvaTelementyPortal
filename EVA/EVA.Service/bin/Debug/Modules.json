@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1",
+    "Name": "Batery level",
+    "Code": "120",
+    "Format": "{0:2}%",
+    "UseGauge": "true",
+    "GaugeName": "ggBatteryLevel",
+    "UseGUI": "true",
+    "GUIControlName": "lblBatteryLevel"
+  },
+  {
+    "Id": "2",
+    "Name": "Velocity",
+    "Code": "170",
+    "Format": "{0}km/s",
+    "UseGauge": "true",
+    "GaugeName": "ggVelocity",
+    "UseGUI": "true",
+    "GUIControlName": "lblVelocity"
+  },
+  {
+    "Id": "3",
+    "Name": "Active current",
+    "Code": "160",
+    "Format": "{0}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblActiveCurrent"
+  },
+  {
+    "Id": "4",
+    "Name": "Battery Heat",
+    "Code": "180",
+    "Format": "{0}°C",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblBatteryHeat"
+  },
+  {
+    "Id": "5",
+    "Name": "Left Time",
+    "Code": "190",
+    "Format": "{0}min",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblLeftTime"
+  },
+  {
+    "Id": "6",
+    "Name": "Max Cell",
+    "Code": "200",
+    "Format": "{0}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblMaxCell"
+  },
+  {
+    "Id": "7",
+    "Name": "Min Cell",
+    "Code": "210",
+    "Format": "{0}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblMinCell"
+  },
+  {
+    "Id": "7",
+    "Name": "Difference",
+    "Code": "220",
+    "Format": "{0}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": "lblDifference"
+  }
+]
