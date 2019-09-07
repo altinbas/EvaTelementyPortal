@@ -1,0 +1,11 @@
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EVA.BLL.dll.config
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EVA.BLL.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EVA.BLL.pdb
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EntityFramework.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EntityFramework.SqlServer.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EntityFramework.xml
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\bin\Release\EntityFramework.SqlServer.xml
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\obj\Release\EVA.BLL.csproj.CoreCompileInputs.cache
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\obj\Release\EVA.BLL.csproj.CopyComplete
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\obj\Release\EVA.BLL.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.BLL\obj\Release\EVA.BLL.pdb

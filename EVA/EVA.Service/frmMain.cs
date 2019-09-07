@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -18,18 +19,24 @@ namespace EVA.Service
         //It use for the data getting 
         bool mReadingIsEnable;
         //Sperater 
-        string mPachageSparater;
-        string mValueSparater;
+        readonly string mPachageSparater;
+        readonly string mValueSparater;
+        readonly string mHost;
+        readonly string mSecurityCode;
         Thread mReaderTheread;
-        delegate void mWriterHandler(string name);
+        delegate void mWriterHandler(string argName);
         private Helpers.JSONConverterHelper mJsonManager;
         private List<Models.JSONFileMainModel> mJsonModelList;
+        private HttpClient mClient;
         public frmMain()
         {
             InitializeComponent();
             mPachageSparater = Helpers.AppSettingHelper.PachageSperator;
             mValueSparater = Helpers.AppSettingHelper.ValueSperater;
+            mHost = Helpers.AppSettingHelper.Host;
+            mSecurityCode = Helpers.AppSettingHelper.HostSecyrityKey;
             mJsonManager = new Helpers.JSONConverterHelper();
+            mClient = new HttpClient();
         }
 
         private async void FrmMain_Load(object sender, EventArgs e)
@@ -56,9 +63,10 @@ namespace EVA.Service
                         var lcData = mSerialPortManager.ReadByte();
                         if ((char)lcData == mPachageSparater.FirstOrDefault())
                         {
-                            mWriterHandler d = new mWriterHandler(fnWriteConsole);
-                            d += fnUpdateUI;
-                            this.Invoke(d, System.Text.Encoding.UTF8.GetString(lcBuffer.ToArray()));
+                            mWriterHandler lcDelegate = new mWriterHandler(fnWriteConsole);
+                            lcDelegate += fnUpdateUI;
+                            lcDelegate += fnSendServer;
+                            this.Invoke(lcDelegate, System.Text.Encoding.UTF8.GetString(lcBuffer.ToArray()));
                             lcBuffer.Clear();
                         }
                         else
@@ -121,40 +129,51 @@ namespace EVA.Service
                 var lcOpcode = lcSplitedArray[0];
                 var lcOpValue = lcSplitedArray[1];
                 var lcCurrentDate = DateTime.Now;
+                var lcModel = mJsonModelList.FirstOrDefault(a => a.Code == lcOpcode);
                 foreach (var control in grpMasterData.Controls)
                 {
                     if (control is Label && (control as Label).Tag.Equals($"val{lcOpcode}"))
                     {
-                        var lcModel = mJsonModelList.FirstOrDefault(a => a.Code == lcOpcode);
                         (control as Label).Text = $"{String.Format(lcModel.Format,lcOpValue)} @ {lcCurrentDate.ToString("HH:mm:ss")}";
                     }
                 }
-                foreach (var lpModel in mJsonModelList)
+                if (lcModel.UseGUI)
                 {
-                    if (lpModel.UseGUI)
+                    Label lcGUILabel = (Label)pnlDashboard.Controls.Find(lcModel.GUIControlName, true).First();
+                    lcGUILabel.Text = string.Format(lcModel.Format, lcOpValue);
+                    if (lcModel.UseGauge)
                     {
-                        Label lcGUILabel = (Label)pnlDashboard.Controls.Find(lpModel.GUIControlName,true).First();
-                        lcGUILabel.Text = string.Format(lpModel.Format, lcOpValue);
-                        if (lpModel.UseGauge)
+                        var lcGauge = pnlDashboard.Controls.Find(lcModel.GaugeName, true).First();
+                        var lcSpliteedData = lcOpValue.Split('.').First();
+                        if (lcGauge != null && lcGauge is BunifuGauge)
                         {
-                            var lcGauge = pnlDashboard.Controls.Find(lpModel.GaugeName, true).First();
-                            var lcSpliteedData = lcOpValue.Split('.').First();
-                            if (lcGauge!=null && lcGauge is BunifuGauge)
-                            {
-                                (lcGauge as BunifuGauge).Value = int.Parse(lcSpliteedData);
-                            }
-                            else if (lcGauge != null && lcGauge is BunifuProgressBar)
-                            {
-                                (lcGauge as BunifuProgressBar).Value = int.Parse(lcSpliteedData);
-                            }
+                            (lcGauge as BunifuGauge).Value = int.Parse(lcSpliteedData);
+                        }
+                        else if (lcGauge != null && lcGauge is BunifuProgressBar)
+                        {
+                            (lcGauge as BunifuProgressBar).Value = int.Parse(lcSpliteedData);
                         }
                     }
-                    
                 }
             }
             catch (Exception)
             {
 
+            }
+        }
+        private async void fnSendServer(string argText)
+        {
+            try
+            {
+                var lcSplitedArray = argText.Split(mValueSparater.First());
+                var lcOpcode = lcSplitedArray[0];
+                var lcOpValue = lcSplitedArray[1];
+                var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         /// <summary>
@@ -346,7 +365,7 @@ namespace EVA.Service
             fnSendData();
         }
         #endregion
-
+        #region Other UI Events
         private void SidePanel_Paint(object sender, PaintEventArgs e)
         {
 
@@ -356,5 +375,6 @@ namespace EVA.Service
         {
             lblCurrentTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+        #endregion
     }
 }
