@@ -170,10 +170,9 @@ namespace EVA.Service
                 var lcOpValue = lcSplitedArray[1];
                 var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
             }
         }
         /// <summary>

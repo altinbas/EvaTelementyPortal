@@ -66,3 +66,8 @@ C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Debug\EVA.Service.appli
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Debug\EVA.Service.csproj.CopyComplete
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Debug\EVA.Service.exe
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Debug\EVA.Service.pdb
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Debug\System.Data.SQLite.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Debug\System.Data.SQLite.EF6.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Debug\System.Data.SQLite.Linq.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Debug\System.Data.SQLite.xml
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Debug\System.Data.SQLite.dll.config

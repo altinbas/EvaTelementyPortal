@@ -85,19 +85,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3f/yrVTYyxy+YoX6Iio70fsVIcROZaYGsVy4S9hOFmc=</dsig:DigestValue>
+        <dsig:DigestValue>ZwIS6KC7JaIDWQxtHaMU7yAtDZ4Tz/un93FZvfpzVoA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="937888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="1016224">
       <assemblyIdentity name="EVA.Service" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JzOmWut1XeKDoKABVF6T5/TcQ2DIYxaeSxIr7mgXldA=</dsig:DigestValue>
+        <dsig:DigestValue>tTbQk1zGjxk2rTCm86z8vKi7vxBsji72TyuFniFCKv8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,13 +113,49 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="EVA.Service.exe.config" size="1546">
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.dll" size="360448">
+      <assemblyIdentity name="System.Data.SQLite" version="1.0.111.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>x/9D7GnulebyHdQqYg54fLB/D8cssoodxKfINtJ4Y74=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.EF6.dll" size="186880">
+      <assemblyIdentity name="System.Data.SQLite.EF6" version="1.0.111.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>92DSwxkHsXo6eTfs3dAZcHzTKxEv8itf7JqM6dceBjc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.Linq.dll" size="186880">
+      <assemblyIdentity name="System.Data.SQLite.Linq" version="1.0.111.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>M09D24j7kmEV1wYQ1oh/01w++jwhyApZqN7Ge0BuX8E=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="EVA.Service.exe.config" size="2292">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kLjVpZbY4+bLHMj5z94UN154k0whhV35856DddG7SBg=</dsig:DigestValue>
+      <dsig:DigestValue>rCXiQeYKFeSjBuifpF1s1TBDHQNef7RnnugNg6GsP/U=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
