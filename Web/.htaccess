@@ -1,0 +1,11 @@
+RewriteEngine On
+
+Options -Indexes
+
+RewriteRule ^logs$ index.php?view=logs
+RewriteRule ^home$ index.php
+
+RewriteRule ^login$ login.php
+RewriteRule ^wait$ wait.php
+RewriteRule ^inactive$ inactive.php
+RewriteRule ^register$ register.php
