@@ -65,7 +65,10 @@ namespace EVA.Service
                         {
                             mWriterHandler lcDelegate = new mWriterHandler(fnWriteConsole);
                             lcDelegate += fnUpdateUI;
-                            lcDelegate += fnSendServer;
+                            if (chcSendData.Checked)
+                            {
+                                lcDelegate += fnSendServer;
+                            }
                             this.Invoke(lcDelegate, System.Text.Encoding.UTF8.GetString(lcBuffer.ToArray()));
                             lcBuffer.Clear();
                         }
@@ -168,11 +171,18 @@ namespace EVA.Service
                 var lcSplitedArray = argText.Split(mValueSparater.First());
                 var lcOpcode = lcSplitedArray[0];
                 var lcOpValue = lcSplitedArray[1];
-                var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
+                var lcContent = new FormUrlEncodedContent(new[]
+                {
+                     new KeyValuePair<string, string>("securityCode", mSecurityCode),
+                     new KeyValuePair<string, string>("key", lcOpcode),
+                     new KeyValuePair<string, string>("value", lcOpValue)
+                });
+               // var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
+                var res = await mClient.PostAsync($"{mHost}",lcContent);
             }
             catch (Exception ex)
             {
-
+                fnWriteConsole($"Network error:{ex.Message}!");
             }
         }
         /// <summary>

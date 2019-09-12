@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="1016224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="1016736">
       <assemblyIdentity name="EVA.Service" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tTbQk1zGjxk2rTCm86z8vKi7vxBsji72TyuFniFCKv8=</dsig:DigestValue>
+        <dsig:DigestValue>AaZ3i0ChLQyAPQeNV6pfJ3/nP29OaL3KFvwYX1TniKI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

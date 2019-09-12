@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Button chkSendNetwork;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grpStartService = new System.Windows.Forms.GroupBox();
             this.btnDisconnect = new System.Windows.Forms.Button();
@@ -42,7 +43,6 @@
             this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.txtData = new System.Windows.Forms.RichTextBox();
             this.btnClearConsole = new System.Windows.Forms.Button();
-            this.btnSendData = new System.Windows.Forms.Button();
             this.grpSemdData = new System.Windows.Forms.GroupBox();
             this.grpMasterData = new System.Windows.Forms.GroupBox();
             this.SidePanel = new System.Windows.Forms.Panel();
@@ -99,6 +99,8 @@
             this.ggVelocity = new ns1.BunifuGauge();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.bunifuDragControl1 = new ns1.BunifuDragControl(this.components);
+            this.chcSendData = new System.Windows.Forms.CheckBox();
+            chkSendNetwork = new System.Windows.Forms.Button();
             this.grpStartService.SuspendLayout();
             this.grpConsole.SuspendLayout();
             this.grpSemdData.SuspendLayout();
@@ -115,6 +117,7 @@
             // 
             // grpStartService
             // 
+            this.grpStartService.Controls.Add(this.chcSendData);
             this.grpStartService.Controls.Add(this.btnDisconnect);
             this.grpStartService.Controls.Add(this.lblStatus);
             this.grpStartService.Controls.Add(this.label1);
@@ -125,7 +128,7 @@
             this.grpStartService.ForeColor = System.Drawing.Color.White;
             this.grpStartService.Location = new System.Drawing.Point(24, 79);
             this.grpStartService.Name = "grpStartService";
-            this.grpStartService.Size = new System.Drawing.Size(273, 236);
+            this.grpStartService.Size = new System.Drawing.Size(273, 268);
             this.grpStartService.TabIndex = 0;
             this.grpStartService.TabStop = false;
             this.grpStartService.Text = "Service Settings";
@@ -136,7 +139,7 @@
             this.btnDisconnect.Enabled = false;
             this.btnDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisconnect.Location = new System.Drawing.Point(20, 180);
+            this.btnDisconnect.Location = new System.Drawing.Point(20, 208);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(232, 33);
             this.btnDisconnect.TabIndex = 6;
@@ -148,7 +151,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(12)));
-            this.lblStatus.Location = new System.Drawing.Point(157, 144);
+            this.lblStatus.Location = new System.Drawing.Point(157, 180);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(84, 20);
             this.lblStatus.TabIndex = 5;
@@ -158,7 +161,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 144);
+            this.label1.Location = new System.Drawing.Point(20, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.TabIndex = 4;
@@ -169,7 +172,7 @@
             this.btnStart.BackColor = System.Drawing.Color.Black;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(122, 97);
+            this.btnStart.Location = new System.Drawing.Point(122, 133);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(130, 33);
             this.btnStart.TabIndex = 3;
@@ -182,7 +185,7 @@
             this.btnRefresh.BackColor = System.Drawing.Color.Black;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(20, 97);
+            this.btnRefresh.Location = new System.Drawing.Point(20, 133);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(88, 33);
             this.btnRefresh.TabIndex = 2;
@@ -260,28 +263,28 @@
             this.btnClearConsole.UseVisualStyleBackColor = false;
             this.btnClearConsole.Click += new System.EventHandler(this.BtnClearConsole_Click);
             // 
-            // btnSendData
+            // chkSendNetwork
             // 
-            this.btnSendData.BackColor = System.Drawing.Color.Black;
-            this.btnSendData.Enabled = false;
-            this.btnSendData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendData.Location = new System.Drawing.Point(24, 105);
-            this.btnSendData.Name = "btnSendData";
-            this.btnSendData.Size = new System.Drawing.Size(228, 33);
-            this.btnSendData.TabIndex = 6;
-            this.btnSendData.Text = "Send Data";
-            this.btnSendData.UseVisualStyleBackColor = false;
-            this.btnSendData.Click += new System.EventHandler(this.BtnSendData_Click);
+            chkSendNetwork.BackColor = System.Drawing.Color.Black;
+            chkSendNetwork.Enabled = false;
+            chkSendNetwork.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            chkSendNetwork.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chkSendNetwork.Location = new System.Drawing.Point(24, 105);
+            chkSendNetwork.Name = "chkSendNetwork";
+            chkSendNetwork.Size = new System.Drawing.Size(228, 33);
+            chkSendNetwork.TabIndex = 6;
+            chkSendNetwork.Text = "Send data to network";
+            chkSendNetwork.UseVisualStyleBackColor = false;
+            chkSendNetwork.Click += new System.EventHandler(this.BtnSendData_Click);
             // 
             // grpSemdData
             // 
-            this.grpSemdData.Controls.Add(this.btnSendData);
+            this.grpSemdData.Controls.Add(chkSendNetwork);
             this.grpSemdData.Controls.Add(this.txtData);
             this.grpSemdData.ForeColor = System.Drawing.Color.White;
-            this.grpSemdData.Location = new System.Drawing.Point(24, 321);
+            this.grpSemdData.Location = new System.Drawing.Point(24, 353);
             this.grpSemdData.Name = "grpSemdData";
-            this.grpSemdData.Size = new System.Drawing.Size(273, 148);
+            this.grpSemdData.Size = new System.Drawing.Size(273, 158);
             this.grpSemdData.TabIndex = 4;
             this.grpSemdData.TabStop = false;
             this.grpSemdData.Text = "Send Data";
@@ -484,9 +487,9 @@
             this.pnlDashboard.Controls.Add(this.lblVelocity);
             this.pnlDashboard.Controls.Add(this.ggVelocity);
             this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDashboard.Location = new System.Drawing.Point(0, 61);
+            this.pnlDashboard.Location = new System.Drawing.Point(0, 66);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1266, 515);
+            this.pnlDashboard.Size = new System.Drawing.Size(1266, 510);
             this.pnlDashboard.TabIndex = 7;
             this.pnlDashboard.Visible = false;
             // 
@@ -945,6 +948,20 @@
             this.bunifuDragControl1.TargetControl = this.SidePanel;
             this.bunifuDragControl1.Vertical = true;
             // 
+            // chcSendData
+            // 
+            this.chcSendData.AutoSize = true;
+            this.chcSendData.Checked = true;
+            this.chcSendData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chcSendData.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(11)));
+            this.chcSendData.Location = new System.Drawing.Point(61, 89);
+            this.chcSendData.Name = "chcSendData";
+            this.chcSendData.Size = new System.Drawing.Size(164, 21);
+            this.chcSendData.TabIndex = 7;
+            this.chcSendData.Text = "Send data to network";
+            this.chcSendData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chcSendData.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1001,7 +1018,6 @@
         private System.Windows.Forms.RichTextBox txtConsole;
         private System.Windows.Forms.Button btnClearConsole;
         private System.Windows.Forms.RichTextBox txtData;
-        private System.Windows.Forms.Button btnSendData;
         private System.Windows.Forms.GroupBox grpSemdData;
         private System.Windows.Forms.GroupBox grpMasterData;
         private System.Windows.Forms.Panel SidePanel;
@@ -1058,6 +1074,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox3;
         private ns1.BunifuDragControl bunifuDragControl1;
+        private System.Windows.Forms.CheckBox chcSendData;
     }
 }
 
