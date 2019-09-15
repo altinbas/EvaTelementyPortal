@@ -113,6 +113,8 @@
     </Compile>
     <Compile Include="Helpers\AppSettingHelper.cs" />
     <Compile Include="Helpers\JSONConverterHelper.cs" />
+    <Compile Include="Loger\LogManager.cs" />
+    <Compile Include="Loger\LogModel.cs" />
     <Compile Include="Models\JSONFileMainModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +131,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\logs.db" />
     <None Include="bin\Debug\Modules.json" />
     <None Include="EVA.Service_TemporaryKey.pfx" />
     <None Include="Modules.json" />
@@ -145,12 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EVA.BLL\EVA.BLL.csproj">
-      <Project>{21f01ccc-22d3-4af9-93f8-37a4710d60cd}</Project>
-      <Name>EVA.BLL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tasarm3.png" />

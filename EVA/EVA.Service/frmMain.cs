@@ -23,6 +23,7 @@ namespace EVA.Service
         readonly string mValueSparater;
         readonly string mHost;
         readonly string mSecurityCode;
+        readonly Loger.LogManager mLogManager;
         Thread mReaderTheread;
         delegate void mWriterHandler(string argName);
         private Helpers.JSONConverterHelper mJsonManager;
@@ -37,6 +38,7 @@ namespace EVA.Service
             mSecurityCode = Helpers.AppSettingHelper.HostSecyrityKey;
             mJsonManager = new Helpers.JSONConverterHelper();
             mClient = new HttpClient();
+            mLogManager = new Loger.LogManager(Helpers.AppSettingHelper.SQLiteConnection);
         }
 
         private async void FrmMain_Load(object sender, EventArgs e)
@@ -65,6 +67,7 @@ namespace EVA.Service
                         {
                             mWriterHandler lcDelegate = new mWriterHandler(fnWriteConsole);
                             lcDelegate += fnUpdateUI;
+                            lcDelegate += fnLog;
                             if (chcSendData.Checked)
                             {
                                 lcDelegate += fnSendServer;
@@ -77,7 +80,7 @@ namespace EVA.Service
                     }
                 }
                 catch (TimeoutException) { }
-                catch(IOException ex)
+                catch (IOException ex)
                 {
                     if (!mSerialPortManager.IsOpen)
                     {
@@ -101,6 +104,22 @@ namespace EVA.Service
             txtConsole.Focus();
             txtConsole.SelectionStart = txtConsole.Text.Length;
         }
+        private void fnLog(string argText)
+        {
+            try
+            {
+                var lcDataArray = argText.Split(mValueSparater[0]);
+                var lcOperationCode = Convert.ToInt32(lcDataArray[0]);
+                var lcValue = double.Parse(lcDataArray[1]);
+                var lcValueText = mJsonModelList.FirstOrDefault(a => a.Code == lcDataArray[0]).Name;
+                mLogManager.fnLog(new Loger.LogModel { OperationCode = lcOperationCode, Value = lcValue, Date = DateTime.Now, Title = lcValueText });
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         /// <summary>
         /// Scan for aviable ports and list them into listbox.
         /// </summary>
@@ -137,7 +156,7 @@ namespace EVA.Service
                 {
                     if (control is Label && (control as Label).Tag.Equals($"val{lcOpcode}"))
                     {
-                        (control as Label).Text = $"{String.Format(lcModel.Format,lcOpValue)} @ {lcCurrentDate.ToString("HH:mm:ss")}";
+                        (control as Label).Text = $"{String.Format(lcModel.Format, lcOpValue)} @ {lcCurrentDate.ToString("HH:mm:ss")}";
                     }
                 }
                 if (lcModel.UseGUI)
@@ -177,8 +196,8 @@ namespace EVA.Service
                      new KeyValuePair<string, string>("key", lcOpcode),
                      new KeyValuePair<string, string>("value", lcOpValue)
                 });
-               // var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
-                var res = await mClient.PostAsync($"{mHost}",lcContent);
+                // var res = await mClient.GetStringAsync($"{mHost}?securityCode={mSecurityCode}&key={lcOpcode}&value={lcOpValue}");
+                var res = await mClient.PostAsync($"{mHost}", lcContent);
             }
             catch (Exception ex)
             {
@@ -276,13 +295,14 @@ namespace EVA.Service
                 mReadingIsEnable = true;
                 mReaderTheread.Start();
                 lblStatus.Text = "RUNNING...";
+                fnLog("000:0.0");
                 btnDisconnect.Enabled = true;
                 btnRefresh.Enabled = btnStart.Enabled = !btnDisconnect.Enabled;
                 fnWriteConsole($"Service Started {cmbSelectPort.SelectedItem}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while starting the service: {ex.Message}","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while starting the service: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>
@@ -304,7 +324,7 @@ namespace EVA.Service
             }
             catch (Exception ex)
             {
-              //  MessageBox.Show( $"An error occurred while stoping the service: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //  MessageBox.Show( $"An error occurred while stoping the service: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>
@@ -316,7 +336,7 @@ namespace EVA.Service
         {
             txtConsole.Clear();
         }
-       
+
         private void BunifuFlatButton1_Click(object sender, EventArgs e)
         {
             pnlDashboard.Visible = false;
@@ -332,7 +352,7 @@ namespace EVA.Service
             var lcResult = MessageBox.Show("Are you sure you want to exit from the app?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (lcResult == DialogResult.Yes)
             {
-                if (mSerialPortManager!=null&&mSerialPortManager.IsOpen)
+                if (mSerialPortManager != null && mSerialPortManager.IsOpen)
                 {
                     mSerialPortManager.Close();
                 }

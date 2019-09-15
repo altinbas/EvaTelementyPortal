@@ -32,6 +32,7 @@
             System.Windows.Forms.Button chkSendNetwork;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grpStartService = new System.Windows.Forms.GroupBox();
+            this.chcSendData = new System.Windows.Forms.CheckBox();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -99,7 +100,7 @@
             this.ggVelocity = new ns1.BunifuGauge();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.bunifuDragControl1 = new ns1.BunifuDragControl(this.components);
-            this.chcSendData = new System.Windows.Forms.CheckBox();
+            this.btnLog = new ns1.BunifuFlatButton();
             chkSendNetwork = new System.Windows.Forms.Button();
             this.grpStartService.SuspendLayout();
             this.grpConsole.SuspendLayout();
@@ -114,6 +115,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // chkSendNetwork
+            // 
+            chkSendNetwork.BackColor = System.Drawing.Color.Black;
+            chkSendNetwork.Enabled = false;
+            chkSendNetwork.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            chkSendNetwork.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chkSendNetwork.Location = new System.Drawing.Point(24, 105);
+            chkSendNetwork.Name = "chkSendNetwork";
+            chkSendNetwork.Size = new System.Drawing.Size(228, 33);
+            chkSendNetwork.TabIndex = 6;
+            chkSendNetwork.Text = "Send data to network";
+            chkSendNetwork.UseVisualStyleBackColor = false;
+            chkSendNetwork.Click += new System.EventHandler(this.BtnSendData_Click);
             // 
             // grpStartService
             // 
@@ -132,6 +147,20 @@
             this.grpStartService.TabIndex = 0;
             this.grpStartService.TabStop = false;
             this.grpStartService.Text = "Service Settings";
+            // 
+            // chcSendData
+            // 
+            this.chcSendData.AutoSize = true;
+            this.chcSendData.Checked = true;
+            this.chcSendData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chcSendData.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(11)));
+            this.chcSendData.Location = new System.Drawing.Point(61, 89);
+            this.chcSendData.Name = "chcSendData";
+            this.chcSendData.Size = new System.Drawing.Size(164, 21);
+            this.chcSendData.TabIndex = 7;
+            this.chcSendData.Text = "Send data to network";
+            this.chcSendData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chcSendData.UseVisualStyleBackColor = true;
             // 
             // btnDisconnect
             // 
@@ -263,20 +292,6 @@
             this.btnClearConsole.UseVisualStyleBackColor = false;
             this.btnClearConsole.Click += new System.EventHandler(this.BtnClearConsole_Click);
             // 
-            // chkSendNetwork
-            // 
-            chkSendNetwork.BackColor = System.Drawing.Color.Black;
-            chkSendNetwork.Enabled = false;
-            chkSendNetwork.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            chkSendNetwork.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chkSendNetwork.Location = new System.Drawing.Point(24, 105);
-            chkSendNetwork.Name = "chkSendNetwork";
-            chkSendNetwork.Size = new System.Drawing.Size(228, 33);
-            chkSendNetwork.TabIndex = 6;
-            chkSendNetwork.Text = "Send data to network";
-            chkSendNetwork.UseVisualStyleBackColor = false;
-            chkSendNetwork.Click += new System.EventHandler(this.BtnSendData_Click);
-            // 
             // grpSemdData
             // 
             this.grpSemdData.Controls.Add(chkSendNetwork);
@@ -305,6 +320,7 @@
             this.SidePanel.Controls.Add(this.lblCurrentTime);
             this.SidePanel.Controls.Add(this.btnHide);
             this.SidePanel.Controls.Add(this.btnExit);
+            this.SidePanel.Controls.Add(this.btnLog);
             this.SidePanel.Controls.Add(this.bunifuFlatButton2);
             this.SidePanel.Controls.Add(this.bunifuFlatButton1);
             this.SidePanel.Controls.Add(this.LogoPanel);
@@ -373,7 +389,7 @@
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(324, 7);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(321, 7);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
@@ -948,19 +964,39 @@
             this.bunifuDragControl1.TargetControl = this.SidePanel;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // chcSendData
+            // btnLog
             // 
-            this.chcSendData.AutoSize = true;
-            this.chcSendData.Checked = true;
-            this.chcSendData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chcSendData.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(11)));
-            this.chcSendData.Location = new System.Drawing.Point(61, 89);
-            this.chcSendData.Name = "chcSendData";
-            this.chcSendData.Size = new System.Drawing.Size(164, 21);
-            this.chcSendData.TabIndex = 7;
-            this.chcSendData.Text = "Send data to network";
-            this.chcSendData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chcSendData.UseVisualStyleBackColor = true;
+            this.btnLog.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLog.BorderRadius = 0;
+            this.btnLog.ButtonText = "Logs";
+            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLog.DisabledColor = System.Drawing.Color.Gray;
+            this.btnLog.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnLog.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnLog.Iconimage")));
+            this.btnLog.Iconimage_right = null;
+            this.btnLog.Iconimage_right_Selected = null;
+            this.btnLog.Iconimage_Selected = null;
+            this.btnLog.IconMarginLeft = 0;
+            this.btnLog.IconMarginRight = 0;
+            this.btnLog.IconRightVisible = true;
+            this.btnLog.IconRightZoom = 0D;
+            this.btnLog.IconVisible = true;
+            this.btnLog.IconZoom = 90D;
+            this.btnLog.IsTab = false;
+            this.btnLog.Location = new System.Drawing.Point(465, 7);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.btnLog.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnLog.selected = false;
+            this.btnLog.Size = new System.Drawing.Size(161, 48);
+            this.btnLog.TabIndex = 2;
+            this.btnLog.Text = "Logs";
+            this.btnLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLog.Textcolor = System.Drawing.Color.White;
+            this.btnLog.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // frmMain
             // 
@@ -1075,6 +1111,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private ns1.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.CheckBox chcSendData;
+        private ns1.BunifuFlatButton btnLog;
     }
 }
 

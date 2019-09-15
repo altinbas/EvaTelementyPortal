@@ -12,7 +12,7 @@
   {
     "Id": "2",
     "Name": "Velocity",
-    "Code": "001",
+    "Code": "170",
     "Format": "{0}km/s",
     "UseGauge": "true",
     "GaugeName": "ggVelocity",
@@ -148,5 +148,25 @@
     "GaugeName": "",
     "UseGUI": "true",
     "GUIControlName": "lblDifference3"
+  },
+  {
+    "Id": "16",
+    "Name": "Long",
+    "Code": "160",
+    "Format": "{0:N6}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": ""
+  },
+  {
+    "Id": "17",
+    "Name": "Lat",
+    "Code": "161",
+    "Format": "{0:N6}",
+    "UseGauge": "false",
+    "GaugeName": "",
+    "UseGUI": "true",
+    "GUIControlName": ""
   }
 ]

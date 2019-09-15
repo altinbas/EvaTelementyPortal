@@ -78,26 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.BLL.dll" size="10240">
-      <assemblyIdentity name="EVA.BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZwIS6KC7JaIDWQxtHaMU7yAtDZ4Tz/un93FZvfpzVoA=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="1016736">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EVA.Service.exe" size="1026976">
       <assemblyIdentity name="EVA.Service" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AaZ3i0ChLQyAPQeNV6pfJ3/nP29OaL3KFvwYX1TniKI=</dsig:DigestValue>
+        <dsig:DigestValue>L7j7tc1SfZasgDGpwUsY6sToudr1sh+GfeAQpWaCCSg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,13 +137,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="EVA.Service.exe.config" size="2292">
+  <file name="EVA.Service.exe.config" size="2356">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rCXiQeYKFeSjBuifpF1s1TBDHQNef7RnnugNg6GsP/U=</dsig:DigestValue>
+      <dsig:DigestValue>6lAhYOyklfLSQXdD0BzyWPEVQlpbF78OHuPJ1KI/chY=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
