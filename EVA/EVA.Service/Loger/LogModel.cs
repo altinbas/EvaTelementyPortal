@@ -6,7 +6,7 @@ namespace EVA.Service.Loger
     {
         public int OperationCode { get; set; }
         public double Value { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Title { get; set; }
     }
 }

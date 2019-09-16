@@ -50,6 +50,7 @@
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.btnHide = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.PictureBox();
+            this.btnLog = new ns1.BunifuFlatButton();
             this.bunifuFlatButton2 = new ns1.BunifuFlatButton();
             this.bunifuFlatButton1 = new ns1.BunifuFlatButton();
             this.LogoPanel = new System.Windows.Forms.Panel();
@@ -100,7 +101,11 @@
             this.ggVelocity = new ns1.BunifuGauge();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.bunifuDragControl1 = new ns1.BunifuDragControl(this.components);
-            this.btnLog = new ns1.BunifuFlatButton();
+            this.pnlLog = new System.Windows.Forms.Panel();
+            this.grdLogs = new System.Windows.Forms.DataGridView();
+            this.lstLogs = new System.Windows.Forms.ListView();
+            this.lstTypes = new System.Windows.Forms.ListBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             chkSendNetwork = new System.Windows.Forms.Button();
             this.grpStartService.SuspendLayout();
             this.grpConsole.SuspendLayout();
@@ -114,6 +119,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlLog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdLogs)).BeginInit();
             this.SuspendLayout();
             // 
             // chkSendNetwork
@@ -368,6 +375,41 @@
             this.btnExit.MouseLeave += new System.EventHandler(this.BtnExit_MouseLeave);
             this.btnExit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnExit_MouseMove);
             // 
+            // btnLog
+            // 
+            this.btnLog.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLog.BorderRadius = 0;
+            this.btnLog.ButtonText = "Logs";
+            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLog.DisabledColor = System.Drawing.Color.Gray;
+            this.btnLog.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnLog.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnLog.Iconimage")));
+            this.btnLog.Iconimage_right = null;
+            this.btnLog.Iconimage_right_Selected = null;
+            this.btnLog.Iconimage_Selected = null;
+            this.btnLog.IconMarginLeft = 0;
+            this.btnLog.IconMarginRight = 0;
+            this.btnLog.IconRightVisible = true;
+            this.btnLog.IconRightZoom = 0D;
+            this.btnLog.IconVisible = true;
+            this.btnLog.IconZoom = 90D;
+            this.btnLog.IsTab = false;
+            this.btnLog.Location = new System.Drawing.Point(465, 7);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnLog.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.btnLog.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnLog.selected = false;
+            this.btnLog.Size = new System.Drawing.Size(161, 48);
+            this.btnLog.TabIndex = 2;
+            this.btnLog.Text = "Logs";
+            this.btnLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLog.Textcolor = System.Drawing.Color.White;
+            this.btnLog.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLog.Click += new System.EventHandler(this.BtnLog_Click);
+            // 
             // bunifuFlatButton2
             // 
             this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
@@ -503,9 +545,9 @@
             this.pnlDashboard.Controls.Add(this.lblVelocity);
             this.pnlDashboard.Controls.Add(this.ggVelocity);
             this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDashboard.Location = new System.Drawing.Point(0, 66);
+            this.pnlDashboard.Location = new System.Drawing.Point(0, 87);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1266, 510);
+            this.pnlDashboard.Size = new System.Drawing.Size(1266, 489);
             this.pnlDashboard.TabIndex = 7;
             this.pnlDashboard.Visible = false;
             // 
@@ -964,39 +1006,70 @@
             this.bunifuDragControl1.TargetControl = this.SidePanel;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // btnLog
+            // pnlLog
             // 
-            this.btnLog.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
-            this.btnLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
-            this.btnLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLog.BorderRadius = 0;
-            this.btnLog.ButtonText = "Logs";
-            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLog.DisabledColor = System.Drawing.Color.Gray;
-            this.btnLog.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnLog.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnLog.Iconimage")));
-            this.btnLog.Iconimage_right = null;
-            this.btnLog.Iconimage_right_Selected = null;
-            this.btnLog.Iconimage_Selected = null;
-            this.btnLog.IconMarginLeft = 0;
-            this.btnLog.IconMarginRight = 0;
-            this.btnLog.IconRightVisible = true;
-            this.btnLog.IconRightZoom = 0D;
-            this.btnLog.IconVisible = true;
-            this.btnLog.IconZoom = 90D;
-            this.btnLog.IsTab = false;
-            this.btnLog.Location = new System.Drawing.Point(465, 7);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
-            this.btnLog.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
-            this.btnLog.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnLog.selected = false;
-            this.btnLog.Size = new System.Drawing.Size(161, 48);
-            this.btnLog.TabIndex = 2;
-            this.btnLog.Text = "Logs";
-            this.btnLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLog.Textcolor = System.Drawing.Color.White;
-            this.btnLog.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlLog.Controls.Add(this.txtSearch);
+            this.pnlLog.Controls.Add(this.grdLogs);
+            this.pnlLog.Controls.Add(this.lstLogs);
+            this.pnlLog.Controls.Add(this.lstTypes);
+            this.pnlLog.Location = new System.Drawing.Point(24, 66);
+            this.pnlLog.Name = "pnlLog";
+            this.pnlLog.Size = new System.Drawing.Size(1202, 489);
+            this.pnlLog.TabIndex = 8;
+            this.pnlLog.Visible = false;
+            this.pnlLog.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel4_Paint);
+            // 
+            // grdLogs
+            // 
+            this.grdLogs.AllowUserToAddRows = false;
+            this.grdLogs.AllowUserToDeleteRows = false;
+            this.grdLogs.AllowUserToResizeRows = false;
+            this.grdLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdLogs.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.grdLogs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdLogs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.grdLogs.Location = new System.Drawing.Point(221, 40);
+            this.grdLogs.Name = "grdLogs";
+            this.grdLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdLogs.Size = new System.Drawing.Size(916, 408);
+            this.grdLogs.TabIndex = 2;
+            // 
+            // lstLogs
+            // 
+            this.lstLogs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.lstLogs.ForeColor = System.Drawing.Color.Black;
+            this.lstLogs.HideSelection = false;
+            this.lstLogs.Location = new System.Drawing.Point(194, 21);
+            this.lstLogs.Name = "lstLogs";
+            this.lstLogs.Size = new System.Drawing.Size(970, 454);
+            this.lstLogs.TabIndex = 1;
+            this.lstLogs.UseCompatibleStateImageBehavior = false;
+            // 
+            // lstTypes
+            // 
+            this.lstTypes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.lstTypes.ForeColor = System.Drawing.Color.White;
+            this.lstTypes.FormattingEnabled = true;
+            this.lstTypes.Location = new System.Drawing.Point(24, 16);
+            this.lstTypes.Name = "lstTypes";
+            this.lstTypes.Size = new System.Drawing.Size(145, 420);
+            this.lstTypes.TabIndex = 0;
+            this.lstTypes.SelectedIndexChanged += new System.EventHandler(this.LstTypes_SelectedIndexChanged);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.Black;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.White;
+            this.txtSearch.Location = new System.Drawing.Point(24, 454);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(145, 17);
+            this.txtSearch.TabIndex = 3;
+            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // frmMain
             // 
@@ -1004,6 +1077,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1266, 576);
+            this.Controls.Add(this.pnlLog);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.SidePanel);
             this.Controls.Add(this.grpMasterData);
@@ -1036,6 +1110,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlLog.ResumeLayout(false);
+            this.pnlLog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdLogs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1112,6 +1189,11 @@
         private ns1.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.CheckBox chcSendData;
         private ns1.BunifuFlatButton btnLog;
+        private System.Windows.Forms.Panel pnlLog;
+        private System.Windows.Forms.ListBox lstTypes;
+        private System.Windows.Forms.ListView lstLogs;
+        private System.Windows.Forms.DataGridView grdLogs;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
 

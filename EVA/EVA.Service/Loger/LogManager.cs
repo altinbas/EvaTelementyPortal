@@ -35,12 +35,71 @@ namespace EVA.Service.Loger
                     mConnection.Open();
                 }
                 var lcCommend = new SQLiteCommand(mConnection);
-                lcCommend.CommandText = $"INSERT INTO Logs(OperationCode,Value,Date,Title) VALUES({argLogModel.OperationCode},{argLogModel.Value},'{argLogModel.Date.ToString("yyyy-MM-dd-HH:mm:ms")}','{argLogModel.Title}')";
+                lcCommend.CommandText = $"INSERT INTO Logs(OperationCode,Value,Date,Title) VALUES({argLogModel.OperationCode},{argLogModel.Value},'{argLogModel.Date}','{argLogModel.Title}')";
                 var lcResult = lcCommend.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
 
+            }
+        }
+        public List<LogModel> fnGetLogs(String argType = "All")
+        {
+            try
+            {
+                if (mConnection.State != System.Data.ConnectionState.Open)
+                {
+                    mConnection.Open();
+                }
+                var lcList = new List<LogModel>();
+                var lcCommend = new SQLiteCommand(mConnection);
+                if (argType.Equals("All"))
+                {
+                    lcCommend.CommandText = $"SELECT OperationCode,Value,Date,Title FROM Logs ORDER BY Date DESC LIMIT 1000";
+                }
+                else
+                {
+                    lcCommend.CommandText = $"SELECT OperationCode,Value,Date,Title FROM Logs WHERE Title='{argType}'  ORDER BY Date DESC LIMIT 1000";
+                }
+                var lcReader = lcCommend.ExecuteReader();
+                while (lcReader.Read())
+                {
+                    var lcModel = new LogModel();
+                    lcModel.OperationCode = lcReader.GetInt32(0);
+                    lcModel.Value = lcReader.GetDouble(1);
+                    lcModel.Title = lcReader.GetString(3);
+                    lcModel.Date = lcReader.GetString(2);
+                    lcList.Add(lcModel);
+                }
+                return lcList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<string> fnGetLogTyps()
+        {
+            try
+            {
+                if (mConnection.State != System.Data.ConnectionState.Open)
+                {
+                    mConnection.Open();
+                }
+                var lcList = new List<string>();
+                var lcCommend = new SQLiteCommand(mConnection);
+                lcCommend.CommandText = $"SELECT Title FROM Logs GROUP BY Title";
+                var lcReader = lcCommend.ExecuteReader();
+                while (lcReader.Read())
+                {
+                    lcList.Add(lcReader.GetString(0));
+                }
+                return lcList;
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
     }

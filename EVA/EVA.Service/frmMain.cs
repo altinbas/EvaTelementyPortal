@@ -1,4 +1,5 @@
-﻿using ns1;
+﻿using EVA.Service.Loger;
+using ns1;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +8,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EVA.Service
@@ -29,6 +31,7 @@ namespace EVA.Service
         private Helpers.JSONConverterHelper mJsonManager;
         private List<Models.JSONFileMainModel> mJsonModelList;
         private HttpClient mClient;
+        private List<LogModel> mLogs;
         public frmMain()
         {
             InitializeComponent();
@@ -43,7 +46,6 @@ namespace EVA.Service
 
         private async void FrmMain_Load(object sender, EventArgs e)
         {
-
             fnRefreshPorts();
             fnGetMetaData();
         }
@@ -112,7 +114,7 @@ namespace EVA.Service
                 var lcOperationCode = Convert.ToInt32(lcDataArray[0]);
                 var lcValue = double.Parse(lcDataArray[1]);
                 var lcValueText = mJsonModelList.FirstOrDefault(a => a.Code == lcDataArray[0]).Name;
-                mLogManager.fnLog(new Loger.LogModel { OperationCode = lcOperationCode, Value = lcValue, Date = DateTime.Now, Title = lcValueText });
+                mLogManager.fnLog(new Loger.LogModel { OperationCode = lcOperationCode, Value = lcValue, Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ms") , Title = lcValueText });
             }
             catch (Exception)
             {
@@ -270,6 +272,25 @@ namespace EVA.Service
                 MessageBox.Show($"An error occurred while starting the service: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Loads the logs data from the database
+        /// </summary>
+        void fnLoadLogs()
+        {
+            try
+            {
+                txtSearch.Clear();
+                lstTypes.Items.Clear();
+                lstTypes.Items.Add("All");
+                lstTypes.Items.AddRange(mLogManager.fnGetLogTyps().ToArray());
+                lstTypes.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         #endregion
         #region Button Events
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -340,11 +361,13 @@ namespace EVA.Service
         private void BunifuFlatButton1_Click(object sender, EventArgs e)
         {
             pnlDashboard.Visible = false;
+            pnlLog.Visible = false;
         }
 
         private void BunifuFlatButton2_Click(object sender, EventArgs e)
         {
             pnlDashboard.Visible = true;
+            pnlLog.Visible = false;
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -404,6 +427,45 @@ namespace EVA.Service
         {
             lblCurrentTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void Panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BtnLog_Click(object sender, EventArgs e)
+        {
+            pnlLog.Visible = true;
+            pnlDashboard.Visible = false;
+            fnLoadLogs();
+        }
         #endregion
+
+        private void LstTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                mLogs = mLogManager.fnGetLogs(lstTypes.SelectedItem.ToString());
+                grdLogs.DataSource = mLogs;
+                grdLogs.ForeColor = Color.Black;
+                grdLogs.Columns["Date"].Width = 250;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearch.Text))
+            {
+                grdLogs.DataSource = mLogs;
+            }
+            else
+            {
+                grdLogs.DataSource = mLogs.Where(a => a.Date.Contains(txtSearch.Text) || a.Title.Contains(txtSearch.Text)).OrderByDescending(a=>a.Date).ToList();
+            }
+        }
     }
 }
