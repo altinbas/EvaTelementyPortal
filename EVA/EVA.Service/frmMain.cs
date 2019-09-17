@@ -29,6 +29,7 @@ namespace EVA.Service
         Thread mReaderTheread;
         delegate void mWriterHandler(string argName);
         private Helpers.JSONConverterHelper mJsonManager;
+        private bool mIsSendNetwork;
         private List<Models.JSONFileMainModel> mJsonModelList;
         private HttpClient mClient;
         private List<LogModel> mLogs;
@@ -42,6 +43,13 @@ namespace EVA.Service
             mJsonManager = new Helpers.JSONConverterHelper();
             mClient = new HttpClient();
             mLogManager = new Loger.LogManager(Helpers.AppSettingHelper.SQLiteConnection);
+            mIsSendNetwork = chcSendData.Checked;
+            chcSendData.CheckedChanged += ChcSendData_CheckedChanged;
+        }
+
+        private void ChcSendData_CheckedChanged(object sender, EventArgs e)
+        {
+            mIsSendNetwork = chcSendData.Checked;
         }
 
         private async void FrmMain_Load(object sender, EventArgs e)
@@ -70,7 +78,7 @@ namespace EVA.Service
                             mWriterHandler lcDelegate = new mWriterHandler(fnWriteConsole);
                             lcDelegate += fnUpdateUI;
                             lcDelegate += fnLog;
-                            if (chcSendData.Checked)
+                            if (mIsSendNetwork)
                             {
                                 lcDelegate += fnSendServer;
                             }
@@ -469,6 +477,11 @@ namespace EVA.Service
         }
 
         private void GrdLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void LogoPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

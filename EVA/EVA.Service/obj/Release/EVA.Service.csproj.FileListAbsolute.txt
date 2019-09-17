@@ -6,10 +6,7 @@ C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EVA.Service.pdb
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\Bunifu_UI_v1.52.dll
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EntityFramework.dll
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EntityFramework.SqlServer.dll
-C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EVA.BLL.dll
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\Newtonsoft.Json.dll
-C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EVA.BLL.pdb
-C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EVA.BLL.dll.config
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EntityFramework.xml
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\EntityFramework.SqlServer.xml
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\Newtonsoft.Json.xml
@@ -23,3 +20,8 @@ C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Release\EVA.Service.app
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Release\EVA.Service.csproj.CopyComplete
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Release\EVA.Service.exe
 C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\obj\Release\EVA.Service.pdb
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\System.Data.SQLite.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\System.Data.SQLite.EF6.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\System.Data.SQLite.Linq.dll
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\System.Data.SQLite.xml
+C:\gitrepo\github\EvaTelementyPortal\EVA\EVA.Service\bin\Release\System.Data.SQLite.dll.config

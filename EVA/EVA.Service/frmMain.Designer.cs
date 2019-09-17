@@ -489,6 +489,7 @@
             this.LogoPanel.Name = "LogoPanel";
             this.LogoPanel.Size = new System.Drawing.Size(140, 60);
             this.LogoPanel.TabIndex = 0;
+            this.LogoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LogoPanel_Paint);
             // 
             // pictureBox1
             // 
