@@ -5,13 +5,13 @@
     $c = mysql_query("SELECT * FROM eva_team WHERE code='$c'");
 
     if (mysql_num_rows($c) == 0) {
-        header("location:./login");
+        header("location:./login.php")
     }
 
     $user = mysql_fetch_object($c);
     
     if ($user->active == "0") {
-        header("location:./inactive");
+        header("location:./inactive.php");
     }
 ?>
 <html>

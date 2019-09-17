@@ -1,6 +1,6 @@
 <?php
-            use PHPMailer\PHPMailer\PHPMailer;
-            use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
     function send_mail($who, $subject, $body) {
         require 'PHPMailer/src/Exception.php';
@@ -69,5 +69,5 @@
         echo "Post ederken sıkıntı oldu";
     }
 
-    header("location:./wait");
+    header("location:./wait.php");
 ?>

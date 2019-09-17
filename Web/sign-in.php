@@ -6,10 +6,10 @@
         $pass = $_POST['password'];
 
         if ($kad == "") {
-            header("location:./login?error=emptyusername");
+            header("location:./login.php?error=emptyusername");
         } else {
             if ($pass == "") {
-                header("location:./login?error=emptypassword");    
+                header("location:./login.php?error=emptypassword");    
             } else {
                 $control = mysql_fetch_object(mysql_query("SELECT * FROM eva_team WHERE mail='$kad'"));
 
@@ -17,7 +17,7 @@
                     setcookie("code", $control->code, time()+3600*24*365*10);
                     header("location:./");
                 } else {
-                    header("location:./login?error=wronganything");
+                    header("location:./login.php?error=wronganything");
                 }
             }
         }

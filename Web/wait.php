@@ -7,7 +7,7 @@
     if (mysql_num_rows($c) == 0) {
         //
     } else {
-        header("location:./login");
+        header("location:./login.php");
     }
 ?>
 <html>
