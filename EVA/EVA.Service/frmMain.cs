@@ -467,5 +467,10 @@ namespace EVA.Service
                 grdLogs.DataSource = mLogs.Where(a => a.Date.Contains(txtSearch.Text) || a.Title.Contains(txtSearch.Text)).OrderByDescending(a=>a.Date).ToList();
             }
         }
+
+        private void GrdLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
