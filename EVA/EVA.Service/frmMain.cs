@@ -122,7 +122,7 @@ namespace EVA.Service
                 var lcOperationCode = Convert.ToInt32(lcDataArray[0]);
                 var lcValue = double.Parse(lcDataArray[1]);
                 var lcValueText = mJsonModelList.FirstOrDefault(a => a.Code == lcDataArray[0]).Name;
-                mLogManager.fnLog(new Loger.LogModel { OperationCode = lcOperationCode, Value = lcValue, Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ms") , Title = lcValueText });
+                mLogManager.fnLog(new Loger.LogModel { OperationCode = lcOperationCode, Value = lcValue, Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ms") , Title = lcValueText });
             }
             catch (Exception)
             {
